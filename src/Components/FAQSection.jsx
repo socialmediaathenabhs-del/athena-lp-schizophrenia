@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 
@@ -6,52 +5,52 @@ const faqs = [
   {
     question: "1. What is schizophrenia and what are its symptoms?",
     answer:
-      "Schizophrenia is a long-term mental health condition that affects how a person thinks, feels, and behaves. Common symptoms include hallucinations (seeing or hearing things that aren't there), delusions (false beliefs), disorganized speech, and difficulty with daily functioning.",
+      "Schizophrenia is a chronic mental disorder affecting thoughts, emotions, and behavior. Symptoms include hallucinations, delusions, disorganized speech, and lack of motivation.",
   },
   {
-    question: "2. How can I find a depression psychiatrist near me?",
+    question: "2. What are the different types of schizophrenia?",
     answer:
-      "You can start by checking online doctor directories like Practo or Lybrate, asking your general physician for a referral, or visiting nearby hospitals and mental health clinics.",
+      "Types include paranoid, disorganized, catatonic, undifferentiated, and residual schizophrenia, each with distinct symptom patterns.",
   },
   {
-    question: "3. What are the different types of depression?",
+    question: "3. How is schizophrenia diagnosed?",
     answer:
-      "There are several forms, including major depressive disorder, persistent depressive disorder (dysthymia), bipolar disorder, seasonal affective disorder (SAD), and postpartum depression, each with its own symptoms and duration.",
+      "Diagnosis involves clinical evaluation, psychiatric assessment, and ruling out other conditions, often using DSM-5 criteria.",
   },
   {
-    question: "4. What are the signs and symptoms of major depression?",
+    question: "4. What treatments are available for schizophrenia?",
     answer:
-      "Common signs include constant sadness, lack of interest in usual activities, sleep disturbances, low energy, difficulty concentrating, and feelings of hopelessness or guilt.",
+      "Treatments include antipsychotic medications, psychotherapy, social skills training, and coordinated specialty care.",
   },
   {
-    question: "5. How can I help someone with depression?",
+    question: "5. What are the early warning signs of schizophrenia?",
     answer:
-      "Be supportive and present. Listen without judgment, encourage them to speak with a professional, and offer help with small tasks. Just being there can make a big difference.",
+      "Early signs may include social withdrawal, unusual thoughts, confusion, reduced emotional expression, and trouble focusing.",
   },
   {
-    question: "6. What are the best therapy options for treating depression?",
+    question: "6. How can schizophrenia be managed long-term?",
     answer:
-      "Popular and effective therapies include cognitive-behavioral therapy (CBT), interpersonal therapy (IPT), and psychodynamic therapy. The right therapy depends on the individual's needs.",
+      "Long-term management includes medication adherence, regular therapy, supportive housing, and family involvement.",
   },
   {
-    question: "7. Where can I find depression treatment centers near me?",
+    question: "7. Is schizophrenia hereditary?",
     answer:
-      "You can search on Google Maps, health directories, or contact local hospitals for recommendations. If you have health insurance, they can also guide you to covered centers.",
+      "Yes, genetics play a role. Having a close relative with schizophrenia increases the risk, though it’s not guaranteed.",
   },
   {
-    question: "8. Can depression be treated without medication?",
+    question: "8. What is the difference between schizophrenia and schizoaffective disorder?",
     answer:
-      "Yes, in many cases therapy, exercise, mindfulness practices, and lifestyle changes can help. However, severe depression might still require a combination of therapy and medication.",
+      "Schizoaffective disorder includes symptoms of schizophrenia along with mood disorder symptoms like depression or mania.",
   },
   {
-    question: "9. What are the signs of depression in teens?",
+    question: "9. Where can I find the best schizophrenia treatment centers in India?",
     answer:
-      "Teens may show symptoms like irritability, social withdrawal, changes in sleep or appetite, low motivation, and poor academic performance. Emotional changes are often more noticeable than sadness.",
+      "You can search online directories, visit hospitals with psychiatry departments, or consult psychiatrists on platforms like Practo.",
   },
   {
-    question: "10. How do I know if I need inpatient care for depression?",
+    question: "10. What are the latest advancements in schizophrenia treatment?",
     answer:
-      "If you're experiencing severe depression, suicidal thoughts, or are unable to manage daily life safely, inpatient care provides a structured and supportive environment to help stabilize your condition.",
+      "New treatments include long-acting injectable antipsychotics, digital therapy tools, and research into targeted brain stimulation.",
   },
 ];
 
@@ -77,9 +76,6 @@ const FAQSection = () => {
             <div
               key={index}
               className="border border-gray-300 rounded-xl bg-white overflow-hidden transition-all duration-300"
-              style={{
-                height: isActive ? "180px" : "72px",
-              }}
             >
               <button
                 onClick={() => toggleFAQ(index)}
@@ -92,7 +88,7 @@ const FAQSection = () => {
                 aria-expanded={isActive}
                 aria-controls={`faq${index}`}
                 id={`faq${index}-btn`}
-                className={`w-full text-left flex justify-between items-center py-4 px-6 text-base font-normal cursor-pointer h-[72px] transition-colors duration-300 ${
+                className={`w-full text-left flex justify-between items-center py-4 px-6 text-base font-normal cursor-pointer transition-colors duration-300 ${
                   isActive ? "bg-[#183b82] text-white" : "text-black"
                 }`}
               >
@@ -108,13 +104,14 @@ const FAQSection = () => {
                 </span>
               </button>
 
+              {/* Toggle answer visibility */}
               <div
                 id={`faq${index}`}
                 role="region"
                 aria-labelledby={`faq${index}-btn`}
-                className={`transition-opacity duration-300 px-6 text-[15px] text-gray-700 border-t border-gray-300 ${
-                  isActive ? "opacity-100 pt-4" : "opacity-0"
-                }`}
+                className={`px-6 text-[15px] text-gray-700 border-t border-gray-300 transition-all duration-300 ${
+                  isActive ? "max-h-screen opacity-100 py-4" : "max-h-0 opacity-0 py-0"
+                } overflow-hidden`}
               >
                 {faq.answer}
               </div>

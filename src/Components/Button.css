@@ -1,0 +1,72 @@
+:root {
+    --shine-degree: 120deg;
+    /* --shine-color: rgba(192, 192, 192, 1); */
+    --shine-color:     rgba(10, 30, 74, 0.5);
+
+
+    --shine-effect: linear-gradient(var(--shine-degree), transparent, var(--shine-color), transparent);
+  }
+  
+  @keyframes shine {
+    0% {
+      transform: translateX(-150%);
+    }
+    100% {
+      transform: translateX(200%);
+    }
+  }
+  
+  .f-btn {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.7s ease-in-out;
+  }
+  
+  /* Shine Effect */
+  .f-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--shine-effect);
+    animation: shine 2s ease-in-out infinite;
+    z-index: 2;
+  }
+  
+  /* Optional Icon */
+  .f-btn img {
+    width: 30px;
+    object-fit: contain;
+    margin-right: 10px;
+    z-index: 3;
+  }
+  
+  /* Hover Effects */
+  .f-btn:hover {
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+  }
+  
+  /* Ripple hover background */
+  .f-btn::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    border-radius: 50%;
+    padding: 0.85em 0.75em;
+    left: -50%;
+    right: -50%;
+    top: -150%;
+    bottom: -150%;
+    transform: scale(0, 0);
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .f-btn:hover::after {
+    transform: scale(1, 1);
+  }
+
+  

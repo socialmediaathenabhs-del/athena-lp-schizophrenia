@@ -4,10 +4,10 @@ import vector from '../assets/Depression/vector_treatments.png';
 import innerBg from '../assets/Depression/treatments_innerBg.png';
 import left_leaf from '../assets/Depression/left_leaf.png';
 import right_leaf from '../assets/Depression/right_leaf.png';
-import des_img from '../assets/Depression/treatment_img1.png';
+import img1 from '../assets/Depression/treatment_1.png';
 import helpAndsupport from '../assets/Depression/treatment_img1.png';
 import specialCare from '../assets/Depression/treatment_img1.png';
-import professionalHelp from '../assets/Depression/treatment_img1.png';
+import img3 from '../assets/Depression/treatment_3.png';
 import physicalActivity from '../assets/Depression/treatment_img1.png';
 
 // import mobileBg from '../assets/Depression/innerBG_mobile.png';
@@ -18,7 +18,7 @@ const tabData = {
   therapies: {
     label: "Schizophrenia Treatment",
     image: {
-      src: des_img,
+      src: img1,
       alt: "Therapy session image showing three people smiling and talking in a cozy room with natural light",
     },
     content: [
@@ -32,22 +32,17 @@ const tabData = {
       alt: "Image representing lifestyle changes such as exercise, diet, and sleep",
     },
     content: [
-      { title: "Exercise:", text: "Regular physical activity can help reduce symptoms." },
-      { title: "Diet:", text: "Eating a balanced diet can improve mood and energy levels." },
-      { title: "Sleep:", text: "Ensuring adequate rest is crucial for mental health." },
+      { title: "This includes", text: "CBT and supportive therapy to help persons understand and control their condition." },
     ],
   },
   professional: {
     label: "Schizophrenia Management",
     image: {
-      src: des_img,
+      src: img3,
       alt: "Image showing a professional counselor or therapist in session",
     },
     content: [
-      { title: "Psychiatrists:", text: "Comprehensive care involves addressing both depression and anxiety symptoms." },
-      { title: "Psychologists:", text: "For therapy and counselling, look for the best psychologist for depression and anxiety." },
-      { title: "Counselors:", text: "Offer support and guidance for mental health." },
-      { title: "Support Groups:", text: "Peer support for shared experiences." },
+      { title: "With proper", text: " schizophrenia treatment, many patients can go a long way to improve their symptoms and functionality. Long-term care, which includes family support and rehabilitation programs, is basic for managing the illness. " },
     ],
   },
   // specialized: {
@@ -132,37 +127,18 @@ const TreatmentsForDepression = () => {
       key: 'Psychotherapy for schizophrenia',
       title: 'Psychotherapy for Schizophrenia',
       content: (
-        <ul className="list-disc pl-5 space-y-1">
-          <li>
-            <span className="font-semibold text-gray-300">Exercise</span>: Regular physical activity can help reduce symptoms.
-          </li>
-          <li>
-            <span className="font-semibold text-gray-300">Diet</span>: Eating a balanced diet can improve mood and energy levels.
-          </li>
-          <li>
-            <span className="font-semibold text-gray-300">Sleep</span>: Ensuring adequate rest is crucial for mental health.
-          </li>
-        </ul>
+        <p>
+          This includes CBT and supportive therapy to help persons understand and control their condition.
+        </p>
       ),
     },
     {
       key: 'schizophrenia management',
       title: 'Schizophrenia Management',
       content: (
-        <ul className="list-disc pl-5 space-y-1">
-          <li>
-            <span className="font-semibold text-gray-300">Psychiatrists</span>: Comprehensive care involves addressing both depression and anxiety symptoms.
-          </li>
-          <li>
-            <span className="font-semibold text-gray-300">Psychologists</span>: For therapy and counselling, look for the best psychologist for depression and anxiety.
-          </li>
-          <li>
-            <span className="font-semibold text-gray-300">Counselors</span>: Offer support and guidance for mental health.
-          </li>
-          <li>
-            <span className="font-semibold text-gray-300">Support Groups</span>:  Peer support for shared experiences.
-          </li>
-        </ul>
+        <p>
+          With proper schizophrenia treatment, many patients can go a long way to improve their symptoms and functionality. Long-term care, which includes family support and rehabilitation programs, is basic for managing the illness.
+        </p>
       
       ),
     },

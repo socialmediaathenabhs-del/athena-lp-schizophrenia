@@ -6,16 +6,16 @@ import vector from '../assets/Depression/vector_faq.png';
 
 const videos = [
   {
-    id: "jideGO38OsU?si=bgO8bIWEUoKK3nlU",
-    description: "A severe Depressive episode patient shares her story of recovery",
+    id: "6uFAns9HzVk",
+    description: "Listen to a mother talk about her son’s journey of schizophrenia recovery at Athena",
   },
   {
-    id: "GM0miuOrZr0?si=OEDflPHwGuMVssOR",
-    description: "An OCD & Depression patient shares her story of recovery",
+    id: "hXlBirmlDnM",
+    description: "The Treatment That Finally Made a Difference for My Schizophrenia",
   },
   {
-    id: "kzyFqInTf-4?si=hH6NJgG_OAKOWjh0",
-    description: "Top 10 Tools Every Product Designer Should Master",
+    id: "5zK-kSxEbJ0",
+    description: "A paranoid schizophrenia Disorder patient shares her story of recovery",
   },
 ];
 

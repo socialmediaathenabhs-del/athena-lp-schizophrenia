@@ -5,6 +5,7 @@ import Depression from './Components/Depression'
 import FAQSection from './Components/FAQSection'
 import Footer from './Components/Footer'
 import HeroSection from './Components/HeroSection'
+import OurFacility from './Components/OurFacility'
 import StatsSection from './Components/StatsSection'
 import TreatmentsForDepression from './Components/TreatmentsForDepression'
 import VisualStories from './Components/VisualStories'
@@ -24,6 +25,7 @@ function App() {
     <TreatmentsForDepression/>
     <VisualStories/>
     <FAQSection/>
+    <OurFacility/>
     <Footer/>
     </>
   )

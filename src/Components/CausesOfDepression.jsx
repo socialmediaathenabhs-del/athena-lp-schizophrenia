@@ -78,7 +78,7 @@ const CausesOfDepression = () => {
           <div className="mt-10 flex flex-wrap justify-center flex-col sm:flex-row sm:justify-evenly items-center gap-6">
             {causes.map((item, index) => (
               <React.Fragment key={index}>
-                <div className="flex flex-col items-center max-w-[180px]">
+                <div className="flex flex-col items-center max-w-[180px] transition-transform duration-300 ease-in-out hover:-translate-y-[10px] hover:scale-105 hover:shadow-[0_15px_35px_rgba(255,255,255,0.50)]">
                   <img
                     src={item.imgSrc}
                     alt={item.alt}

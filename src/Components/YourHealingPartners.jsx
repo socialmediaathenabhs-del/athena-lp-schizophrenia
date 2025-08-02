@@ -39,7 +39,7 @@ const YourHealingPartners = () => {
   return (
     <>
     <section
-      className="max-w-full mx-auto px-6 pt-16 sm:pb-20 text-center relative bg-white z-10   overflow-hidden"
+      className="max-w-full mx-auto px-6 pt-16 pb-20 sm:pb-10 text-center relative bg-white z-10   overflow-hidden"
     //   style={{
     //     backgroundImage:
     //       "url('https://placehold.co/1200x400?text=Background+Image+Placeholder&font=inter')",
@@ -59,7 +59,7 @@ const YourHealingPartners = () => {
 
       <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-12 max-w-6xl mx-auto">
         {teamMembers.map((member, index) => (
-          <div key={index} className="flex flex-col items-center">
+          <div key={index} className="flex flex-col items-center transform transition-transform duration-300 hover:scale-[1.08]">
             <div className="w-70 h-70 rounded-full overflow-hidden">
               <img
                 src={member.image}

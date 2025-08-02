@@ -10,22 +10,58 @@ const HeroSection = () => {
     message: '',
   });
 
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const newErrors = {};
+
+    // Name must only contain letters and spaces
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required.';
+    } else if (!/^[a-zA-Z\s]+$/.test(formData.name.trim())) {
+      newErrors.name = 'Name can only contain letters and spaces.';
+    }
+
+    // Phone number must be 10 digits
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required.';
+    } else if (!/^\d{10}$/.test(formData.phone.trim())) {
+      newErrors.phone = 'Enter a valid 10-digit phone number.';
+    }
+
+    // Message should be meaningful
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required.';
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters.';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: '' }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validate()) return;
 
     try {
-      await fetch('https://script.google.com/macros/s/AKfycbzUF2YVah9zxYLnU05CyQ9GFN8AykbVF8QX6UYe2186KhcPZCJ2kj_GqjYj9MyuUFMd/exec?sheet=Schizophrenia', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      await fetch(
+        'https://script.google.com/macros/s/AKfycbx0SfehVJJHmlZRBJ_LU_tO1oQvLK_5f2UdVhRb4a8kbXmloH_jrT2U63Zv_nWTBd6C/exec?sheet=Depression',
+        {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       alert('Your form has been submitted!');
       setFormData({ name: '', phone: '', message: '' });
@@ -69,39 +105,49 @@ const HeroSection = () => {
 
         <form
           onSubmit={handleSubmit}
-          className="w-[350px] bg-[#163683B3] rounded-2xl border-[1px] border-white px-4 py-10 flex flex-col space-y-7 text-white"
+          className="w-[350px] bg-[#163683B3] rounded-2xl border-[1px] border-white px-4 py-10 flex flex-col space-y-4 text-white"
           style={{ backdropFilter: 'blur(5px)' }}
         >
           <h2 className="text-center font-semibold text-[20px] leading-tight">
             Schedule Your <br /> Confidential Consultation
           </h2>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Your Name"
-            required
-            className="bg-[#FFFFFF45] rounded-md px-4 py-4 text-[16px] font-thin placeholder-white placeholder-opacity-70 focus:outline-none border border-white"
-          />
-          <input
-            type="text"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="Your Mobile No."
-            required
-            className="bg-[#FFFFFF45] rounded-md px-4 py-4 text-[16px] font-thin placeholder-white placeholder-opacity-70 focus:outline-none border border-white"
-          />
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="Describe Your Case"
-            rows="6"
-            required
-            className="bg-[#FFFFFF45] rounded-md px-4 py-4 text-[16px] font-thin placeholder-white placeholder-opacity-70 resize-none focus:outline-none border border-white"
-          />
+
+          <div>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your Name"
+              className="bg-[#FFFFFF45] rounded-md px-4 py-4 text-[16px] font-thin w-full placeholder-white placeholder-opacity-70 focus:outline-none border border-white"
+            />
+            {errors.name && <p className="text-red-200 text-sm mt-1">{errors.name}</p>}
+          </div>
+
+          <div>
+            <input
+              type="text"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="Your Mobile No."
+              className="bg-[#FFFFFF45] rounded-md px-4 py-4 text-[16px] font-thin w-full placeholder-white placeholder-opacity-70 focus:outline-none border border-white"
+            />
+            {errors.phone && <p className="text-red-200 text-sm mt-1">{errors.phone}</p>}
+          </div>
+
+          <div>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Describe Your Case"
+              rows="6"
+              className="bg-[#FFFFFF45] rounded-md px-4 py-4 text-[16px] font-thin w-full placeholder-white placeholder-opacity-70 resize-none focus:outline-none border border-white"
+            />
+            {errors.message && <p className="text-red-200 text-sm mt-1">{errors.message}</p>}
+          </div>
+
           <button type="submit" className="f-btn bg-white text-[#01184C] font-semibold text-[16px] rounded-full py-2 hover:bg-gray-100 transition">
             Start Your Healing Journey
           </button>
@@ -112,39 +158,49 @@ const HeroSection = () => {
       <div className="hidden sm:block">
         <form
           onSubmit={handleSubmit}
-          className="absolute top-[380px] left-10 -translate-y-1/2 bg-[#163683B3] rounded-2xl border border-white px-6 py-10 w-[400px] flex flex-col space-y-8 text-white"
+          className="absolute top-[380px] left-10 -translate-y-1/2 bg-[#163683B3] rounded-2xl border border-white px-6 py-10 w-[400px] flex flex-col space-y-5 text-white"
           style={{ backdropFilter: 'blur(5px)' }}
         >
           <h2 className="text-center font-semibold text-[24px] leading-tight">
             Schedule Your <br /> Confidential Consultation
           </h2>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Your Name"
-            required
-            className="bg-[#FFFFFF45] rounded-md px-4 py-4 text-[16px] font-thin placeholder-white placeholder-opacity-70 focus:outline-none border border-white"
-          />
-          <input
-            type="text"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="Your Mobile No."
-            required
-            className="bg-[#FFFFFF45] rounded-md px-4 py-4 text-[16px] font-thin placeholder-white placeholder-opacity-70 focus:outline-none border border-white"
-          />
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="Describe Your Case"
-            rows="6"
-            required
-            className="bg-[#FFFFFF45] rounded-md px-4 py-4 text-[16px] font-thin placeholder-white placeholder-opacity-70 resize-none focus:outline-none border border-white h-[180px]"
-          />
+
+          <div>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your Name"
+              className="bg-[#FFFFFF45] rounded-md px-4 py-4 text-[16px] font-thin w-full placeholder-white placeholder-opacity-70 focus:outline-none border border-white"
+            />
+            {errors.name && <p className="text-red-200 text-sm mt-1">{errors.name}</p>}
+          </div>
+
+          <div>
+            <input
+              type="text"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="Your Mobile No."
+              className="bg-[#FFFFFF45] rounded-md px-4 py-4 text-[16px] font-thin w-full placeholder-white placeholder-opacity-70 focus:outline-none border border-white"
+            />
+            {errors.phone && <p className="text-red-200 text-sm mt-1">{errors.phone}</p>}
+          </div>
+
+          <div>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Describe Your Case"
+              rows="6"
+              className="bg-[#FFFFFF45] rounded-md px-4 py-4 text-[16px] font-thin w-full placeholder-white placeholder-opacity-70 resize-none focus:outline-none border border-white h-[180px]"
+            />
+            {errors.message && <p className="text-red-200 text-sm mt-1">{errors.message}</p>}
+          </div>
+
           <button type="submit" className="f-btn bg-white text-[#01184C] font-semibold text-[20px] rounded-full py-2 hover:bg-gray-100 transition">
             Start Your Healing Journey
           </button>
@@ -170,3 +226,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+

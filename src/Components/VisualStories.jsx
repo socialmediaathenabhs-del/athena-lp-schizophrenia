@@ -52,7 +52,7 @@ const VisualStories = () => {
                 href="https://www.youtube.com/@AthenaOKASForFemale"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 px-6 py-2 border border-black rounded-full text-xs text-black hover:bg-gray-100 transition z-10"
+                className="mt-6 px-6 py-2 border border-black rounded-full text-xs text-black hover:bg-gray-100 transition z-10 hover:bg-gray-100  hover:-translate-y-[5px] transform"
               >
                 Learn More
               </a>

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
+import vector from '../assets/Depression/vector_treatments.png';
+
 
 const faqs = [
   {
@@ -63,12 +65,12 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="bg-white pb-14 sm:pb-20 px-6 max-w-7xl mx-auto">
+    <div className="bg-white pb-8 sm:pb-20 px-6 max-w-7xl mx-auto relative">
       <h1 className="text-center text-[32px] font-extrabold text-[#183B82] mb-10">
         Curious? Start Here.
       </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 max-w-5xl mx-auto sm:mb-20">
         {faqs.map((faq, index) => {
           const isActive = index === activeIndex;
 
@@ -118,6 +120,11 @@ const FAQSection = () => {
             </div>
           );
         })}
+        <img
+        src={vector}
+        alt="Gradient divider"
+        className=" hidden sm:block w-full h-auto absolute bottom-[-180px] left-10 z-0"
+      />
       </div>
     </div>
   );

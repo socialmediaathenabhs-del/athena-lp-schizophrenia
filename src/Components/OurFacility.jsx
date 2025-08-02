@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
-// import ourFacilty_leaf1 from '../assets/ourFacilty_leaf1.png';
-// import ourFacilty_leaf2 from '../assets/ourFacilty_leaf2.png';
+import ourFacilty_leaf1 from '../assets/Depression/ourFacility_Leaf1.png';
+import ourFacilty_leaf2 from '../assets/Depression/ourFacility_Leaf2.png';
 import img1 from "../assets/Depression/ourFacility_1.png";
 import img2 from "../assets/Depression/ourFacility_2.png";
 import img3 from "../assets/Depression/ourFacility_3.png";
@@ -72,16 +72,16 @@ const OurFacility = () => {
   return (
     <div className="bg-white relative sm:min-h-screen flex flex-col items-center justify-center px-4 py-12 overflow-hidden">
       {/* Decorative images */}
-      {/* <img
+      <img
         src={ourFacilty_leaf1}
         alt="Decorative leaf"
-        className="absolute bottom-27 sm:bottom-0 left-0 w-80 sm:w-200 pointer-events-none select-none"
+        className="hidden sm:block absolute bottom-27 sm:bottom-0 left-0 w-80 sm:w-100 pointer-events-none select-none"
       />
       <img
         src={ourFacilty_leaf2}
         alt="Decorative leaf"
         className="hidden sm:block relative sm:absolute -bottom-30 right-0 w-90 pointer-events-none select-none z-1"
-      /> */}
+      />
 
       <h2 className="text-center text-[#1e3a8a] font-extrabold text-3xl sm:text-[40px] leading-tight mb-8">Our Facility</h2>
 
